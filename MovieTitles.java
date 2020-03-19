@@ -13,7 +13,7 @@ import java.io.BufferedReader;
 
 /**
  *
- * @author Ana
+ * @author Yuemei Wu
  */
 public class MovieTitles {
 
