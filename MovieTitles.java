@@ -1,82 +1,66 @@
 
 
-package movietitles;
+package movietitle;
+
 import java.util.Scanner;
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.BufferedReader;
-
+//import java.util.Arrays;
 
 /**
  *
- * @author Yuemei Wu
+ * @author Ana
  */
-public class MovieTitles {
+public class MovieTitle {
 
     /**
      * @param args the command line arguments
-     * 
      */
-    private static class movieBundle{
-        private String num;
-        private String title;
-        private String genre;
-    
-    public movieBundle(String num, String tile, String genre){
-        this.num = num;
-        this.title = tile;
-        this.genre = genre;
-        
+    public static void main(String[] args) throws FileNotFoundException {
+
+        String lastSix = "";
+        String example1 = "";
+        String example2 = "";
+        String example3 = "";
+        List<String> setArray = new ArrayList<String>();
+        String[] setArray1 = null;
+        int rowCount = 9742;
+        File file = new File("input2.txt");
+        Scanner sc = new Scanner(file);
+        String[] movield = new String[9742];
+        String[] title = new String[9742];
+        String[] genre = new String[9742];
+        for (int i = 0; i < rowCount; i++) {
+            String row = sc.nextLine();
+            String[] data = row.split(",");
+            movield[i] = data[0];
+            title[i] = data[1];
+            genre[i] = data[2];
+            String titleL = title[i];
+            //System.out.println(data);
+            String titleFirst = "";
+            for (int j = 0; j < titleL.length(); j++) {
+                if (titleL == null) {
+                    titleFirst = "";
+                } else if (titleL.length() <= 6) {
+                    titleFirst = titleL;
+                } else {
+
+                    titleFirst = titleL.substring(0, titleL.length() - 6);
+
+                }
+
+            }
+            
+            setArray = Arrays.asList(titleFirst);
+            for (int h = 0; h < setArray.size(); h++) {
+                System.out.println("example = " + setArray.get(h));
+
+            }
+
+        }
+
     }
-    public String num(){
-        return num;
-    }
-    public String title(){
-        return title;
-    }
-    public String genre(){
-        return genre;
-    }
-    @Override
-    public String toString(){
-        return num +  " " + title + " " + genre +"\n" ;
-    }
-    
-    }
-    public static void main(String[] args) throws FileNotFoundException, IOException  {
-        List mv2= readcsv();
-         File file1 = new File(" output.txt");
-        PrintWriter writer1 = new PrintWriter(file1);
-        writer1.print(mv2);
-    }
-        // TODO code application logic here
-    public static List readcsv()throws FileNotFoundException, IOException{
-        List movie = new ArrayList<>(); 
-        FileReader file = new FileReader("input.txt");
-        BufferedReader br = new  BufferedReader(file);
-        String line = br.readLine();
-      while ((line = br.readLine()) != null && !line.isEmpty()) {
-          String [] movieList = line.split(",");
-          String num = movieList[0];
-          String title = movieList[1];
-          String genre = movieList[2];
-          movieBundle mB = new movieBundle(num, title, genre);
-          movie.add(mB);
-          
-    }
-      br.close();
-     return movie;
-    
 }
-}
-
- 
-
-       
- 
-
-       
