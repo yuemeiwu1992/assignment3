@@ -19,11 +19,6 @@ public class MovieTitle {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
-
-        String lastSix = "";
-        String example1 = "";
-        String example2 = "";
-        String example3 = "";
         List<String> setArray = new ArrayList<String>();
         String[] setArray1 = null;
         int rowCount = 9742;
@@ -55,12 +50,10 @@ public class MovieTitle {
             }
             
             setArray = Arrays.asList(titleFirst);
-            for (int h = 0; h < setArray.size(); h++) {
-                System.out.println("example = " + setArray.get(h));
-
-            }
-
+           for(String s: setArray){
+              System.out.println(s); 
         }
 
     }
+}
 }
